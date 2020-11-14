@@ -29,11 +29,25 @@ namespace MadLib
             foreach (var item in items) if (condition(item, index)) action(item, index++);
         }
 
-        public static void SwapInt(ref int a, ref int b)
+        public static void Swap(ref int a, ref int b)
         {
             a ^= b;
             b ^= a;
             a ^= b;
+        }
+        
+        public static void Swap<T>(ref T a, ref T b)
+        {
+            T help = a;
+            a = b;
+            b = help;
+        }
+
+        public static void SwapIndexInArray<T>(this T[] arr, int i1, int i2)
+        {
+            T help = arr[i1];
+            arr[i1] = arr[i2];
+            arr[i2] = help;
         }
 
         public static T DeepClone<T>(this T obj)

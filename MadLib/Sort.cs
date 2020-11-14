@@ -12,7 +12,7 @@
                 {
                     if (arr[i] > arr[i + 1])
                     {
-                        Tools.SwapInt(ref arr[i], ref arr[i + 1]);
+                        Tools.Swap(ref arr[i], ref arr[i + 1]);
                         sorted++;
                     }
                 }
@@ -30,17 +30,17 @@
 
         private static int QuickSort(int[] pole, int left, int right, int pivot)
         {
-            SwapInArray(pole, pivot, right);
+            pole.SwapIndexInArray(pivot, right);
             int index = left;
             for (int i = left; i < right; i++)
             {
                 if (pole[i] < pole[right])
                 {
-                    SwapInArray(pole, i, index);
+                    pole.SwapIndexInArray(i, index);
                     index++;
                 }
             }
-            SwapInArray(pole, right, index);
+            pole.SwapIndexInArray(right, index);
             return index;
         }
 
@@ -53,13 +53,6 @@
                 QuickSort(pole, left, newPivot - 1);
                 QuickSort(pole, newPivot + 1, right);
             }
-        }
-
-        static void SwapInArray(int[] arr, int i1, int i2)
-        {
-            int help = arr[i1];
-            arr[i1] = arr[i2];
-            arr[i2] = help;
         }
     }
 }
