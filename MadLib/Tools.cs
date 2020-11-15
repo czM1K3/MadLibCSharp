@@ -29,6 +29,27 @@ namespace MadLib
             foreach (var item in items) if (condition(item, index)) action(item, index++);
         }
 
+        public static T[] ForEachW<T>(this T[] arr, Func<T> action)
+        {
+            for (int i = 0; i < arr.Length - 1; i++)
+            {
+                arr[i] = action();
+            }
+            return arr;
+        }
+
+        public static T[,] ForEachW<T>(this T[,] arr, Func<T> action)
+        {
+            for (int i = 0; i < arr.GetLength(0); i++)
+            {
+                for (int j = 0; j < arr.GetLength(1); j++)
+                {
+                    arr[i, j] = action();
+                }
+            }
+            return arr;
+        }
+
         public static void Swap(ref int a, ref int b)
         {
             a ^= b;
