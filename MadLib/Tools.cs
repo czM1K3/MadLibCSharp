@@ -50,6 +50,30 @@ namespace MadLib
             return arr;
         }
 
+        public static IEnumerable<T> Concat<T>(this IEnumerable<T> items, T item)
+        {
+            foreach (var i in items)
+            {
+                yield return i;
+            }
+            yield return item;
+        }
+
+        public static IEnumerable<T> Concat<T>(this T item, IEnumerable<T> items)
+        {
+            yield return item;
+            foreach (var i in items)
+            {
+                yield return i;
+            }
+        }
+
+        public static IEnumerable<T> ConcatOne<T>(this T item1, T item2)
+        {
+            yield return item1;
+            yield return item2;
+        }
+
         public static void Swap(ref int a, ref int b)
         {
             a ^= b;
